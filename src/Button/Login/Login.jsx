@@ -201,7 +201,6 @@ function Login() {
           className="align-items-center"
           style={{
             background: "white",
-            border: "none",
             boxShadow: " 0px 0px 4px #ccc",
             marginRight: "0.5rem",
             color: "#4d4d4d",
