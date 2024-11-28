@@ -54,15 +54,15 @@ function Home() {
     };
   }, []);
   const [role, setRole] = useState(null);
-    // ดึง role จาก localStorage เมื่อ component ถูก mount
-    useEffect(() => {
-      const userLogin = JSON.parse(localStorage.getItem("userLogin"));
-      if (userLogin) {
-        setRole(userLogin.role);
-      }else{
-        setRole(null); // ถ้าไม่พบข้อมูลผู้ใช้จะให้ role เป็น null
-      }
-    }, []);
+  // ดึง role จาก localStorage เมื่อ component ถูก mount
+  useEffect(() => {
+    const userLogin = JSON.parse(localStorage.getItem("userLogin"));
+    if (userLogin) {
+      setRole(userLogin.role);
+    } else {
+      setRole(null); // ถ้าไม่พบข้อมูลผู้ใช้จะให้ role เป็น null
+    }
+  }, []);
 
   const [filters, setFilters] = useState({
     id: "",
@@ -476,15 +476,15 @@ function Home() {
             >
               ยกเลิกการเลือกทั้งหมด
             </Button>
-          <Button
-            variant="danger"
-            // onClick={deleteSelectedDocuments}
-            onClick={(doc) => deleteSelectedDocuments(doc.id)}
-            style={{ marginLeft: "10px" }}
-            disabled={selectedDocuments.length === 0}
-          >
-            ลบที่เลือก
-          </Button>
+            <Button
+              variant="danger"
+              // onClick={deleteSelectedDocuments}
+              onClick={(doc) => deleteSelectedDocuments(doc.id)}
+              style={{ marginLeft: "10px" }}
+              disabled={selectedDocuments.length === 0}
+            >
+              ลบที่เลือก
+            </Button>
           </div>
         )}
         {/* Table for Documents */}
@@ -608,20 +608,22 @@ function Home() {
                         >
                           <i className="bi bi-download"></i>
                         </button>
-                        {/* Delete */}
-                        <button
-                          onClick={() => moveToTrash(doc.id)}
-                          title="Delete"
-                          style={{
-                            background: "none",
-                            border: "none",
-                            cursor: "pointer",
-                            fontSize: "1.2em",
-                            color: "red",
-                          }}
-                        >
-                          <FaTrash />
-                        </button>
+
+                        {role !== null && (
+                          <button
+                            onClick={() => moveToTrash(doc.id)}
+                            title="Delete"
+                            style={{
+                              background: "none",
+                              border: "none",
+                              cursor: "pointer",
+                              fontSize: "1.2em",
+                              color: "red",
+                            }}
+                          >
+                            <FaTrash />
+                          </button>
+                        )}
                       </div>
                     ) : (
                       // แสดง 3 จุดเมื่อไม่ได้ hover
