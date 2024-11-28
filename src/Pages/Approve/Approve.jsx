@@ -202,16 +202,20 @@ function Approve() {
         setCurrentPage(pageNumber);
     };
 
-    const toggleSelectAll = () => {
-        const newState = !selectAll;
-        setSelectAll(newState);
-        setPermissions({
-            superAdmin: newState,
-            admin: newState,
-            officer: newState,
-            guest: newState,
-        });
-    };
+   const toggleSelectAll = () => {
+    const newState = !selectAll;
+    setSelectAll(newState);
+    setPermissions({
+        superAdmin: newState,
+        admin: newState,
+        officer: newState,
+        guest: newState,
+    });
+    setDocuments(prevDocuments =>
+        prevDocuments.map(doc => ({ ...doc, selected: newState }))
+    );
+};
+
 
     const handlePermissionChange = (key) => {
         setPermissions((prev) => {

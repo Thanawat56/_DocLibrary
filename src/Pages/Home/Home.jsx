@@ -21,8 +21,6 @@ function Home() {
   const [currentImage, setCurrentImage] = useState(null); // เก็บภาพ Base64
   const [hoveredRow, setHoveredRow] = React.useState(null);
   const [approveDocments, setApproveDocments] = useState([]);
-  const [filteredData, setFilteredData] = useState([]);
-  const [home, setHome] = useState([]);
 
   // โหลดข้อมูลจาก localStorage
   const loadDocuments = () => {
@@ -81,6 +79,7 @@ function Home() {
       fiscalYear: "",
       department: "",
     });
+    
   };
 
   const handleFilterChange = (e) => {
@@ -459,7 +458,7 @@ function Home() {
             </Button>
           </div>
         </span>
-        {role !== null && (
+        {role !== 'Officer' && role !== null &&   (
           <div style={{ margin: "20px 0" }}>
             <Button
               variant="primary"
@@ -609,7 +608,7 @@ function Home() {
                           <i className="bi bi-download"></i>
                         </button>
 
-                        {role !== null && (
+                        {role !== 'Officer' && role !== null && (
                           <button
                             onClick={() => moveToTrash(doc.id)}
                             title="Delete"

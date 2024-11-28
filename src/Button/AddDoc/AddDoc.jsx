@@ -10,7 +10,7 @@ function AddDoc() {
   const [formData, setFormData] = useState({
     id: "",
     docNameRaw: "",
-    docType: "",
+    type: "",
     fiscalYear: "",
     department: "",
     description: "",
@@ -74,7 +74,7 @@ function AddDoc() {
 
     // Check if the ID already exists
     const currentData =
-      JSON.parse(localStorage.getItem("approveDocument")) || [];
+      JSON.parse(localStorage.getItem("documents")) || [];
     const existingDocument = currentData.find((doc) => doc.id === id);
     if (existingDocument) {
       alert("ไอดีซ้ำ! กรุณาระบุเลขเอกสารที่ไม่ซ้ำ");
@@ -98,7 +98,7 @@ function AddDoc() {
       name: userLogin.name,
       role: userLogin.role,
       userDepartment: userLogin.userDepartment,
-      time: new Date().toLocaleDateString(),
+      time: new Date().toLocaleString(),
     };
 
     // **เพิ่มการสร้าง Notification**
