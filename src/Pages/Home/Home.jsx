@@ -112,7 +112,7 @@ function Home() {
     const bin = JSON.parse(localStorage.getItem("bin")) || [];
     bin.push(docToBin);
     localStorage.setItem("bin", JSON.stringify(bin));
-
+    updateLocalStorage(updatedDocuments); // อัปเดต localStorage และ UI
     setDocuments(updatedDocuments);
     localStorage.setItem("approveDocuments", JSON.stringify(updatedDocuments));
   };
