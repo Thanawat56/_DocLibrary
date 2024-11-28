@@ -24,9 +24,10 @@ function Home() {
   const [filteredData, setFilteredData] = useState([]);
   const [home, setHome] = useState([]);
 
-   // โหลดข้อมูลจาก localStorage
-   const loadDocuments = () => {
-    const storedDocuments = JSON.parse(localStorage.getItem("approveDocuments")) || [];
+  // โหลดข้อมูลจาก localStorage
+  const loadDocuments = () => {
+    const storedDocuments =
+      JSON.parse(localStorage.getItem("approveDocuments")) || [];
     setDocuments(storedDocuments);
     setFilteredDocuments(storedDocuments);
   };
@@ -52,35 +53,16 @@ function Home() {
       window.removeEventListener("storage", handleStorageChange);
     };
   }, []);
-
-  // const filterData = (data, filters) => {
-  //   return data.filter((item) => {
-  //     const matchId = filters.id ? item.id.includes(filters.id) : true;
-  //     const matchDocName = filters.docName
-  //       ? item.docNameRaw.includes(filters.docName)
-  //       : true;
-  //     const matchDocDate = filters.docDate
-  //       ? item.time && item.time.startsWith(filters.docDate)
-  //       : true;
-  //     const matchType = filters.type ? item.type === filters.type : true;
-  //     const matchFiscalYear = filters.fiscalYear
-  //       ? item.fiscalYear.includes(filters.fiscalYear)
-  //       : true;
-  //     const matchDepartment = filters.department
-  //       ? item.department.includes(filters.department)
-  //       : true;
-
-  //     return (
-  //       matchId &&
-  //       matchDocName &&
-  //       matchDocDate &&
-  //       matchType &&
-  //       matchFiscalYear &&
-  //       matchDepartment
-  //     );
-  //   });
-  // };
-
+  const [role, setRole] = useState(null);
+    // ดึง role จาก localStorage เมื่อ component ถูก mount
+    useEffect(() => {
+      const userLogin = JSON.parse(localStorage.getItem("userLogin"));
+      if (userLogin) {
+        setRole(userLogin.role);
+      }else{
+        setRole(null); // ถ้าไม่พบข้อมูลผู้ใช้จะให้ role เป็น null
+      }
+    }, []);
 
   const [filters, setFilters] = useState({
     id: "",
@@ -100,7 +82,6 @@ function Home() {
       department: "",
     });
   };
-  
 
   const handleFilterChange = (e) => {
     const { id, value } = e.target;
@@ -110,7 +91,6 @@ function Home() {
     }));
     applyFilters(); // เรียกใช้ applyFilters เพื่อกรองข้อมูลทันที
   };
-  
 
   const [documents, setDocuments] = useState([]);
   const [filteredDocuments, setFilteredDocuments] = useState([]);
@@ -173,14 +153,14 @@ function Home() {
         (!filters.id || doc.id.includes(filters.id)) &&
         (!filters.docNameRaw || doc.docNameRaw.includes(filters.docNameRaw)) &&
         (!filters.type || doc.type === filters.type) &&
-        (!filters.fiscalYear || doc.fiscalYear === Number(filters.fiscalYear)) &&
+        (!filters.fiscalYear ||
+          doc.fiscalYear === Number(filters.fiscalYear)) &&
         (!filters.department || doc.department === filters.department)
       );
     });
     setFilteredDocuments(filtered);
   };
-  
-  
+
   const applySearch = () => {
     const filtered = documents.filter((doc) => {
       return (
@@ -212,85 +192,83 @@ function Home() {
     <div className="main_css-container">
       <div className="home-container">
         <h1 style={{ padding: "20px", textAlign: "center" }}>เอกสาร</h1>
-{/* Modal Filter */}
-<Modal show={showFilter} onHide={handleCloseFilter}>
-  <Modal.Header closeButton style={{ backgroundColor: "orange" }}>
-    <Modal.Title style={{ color: "white" }}>Filter</Modal.Title>
-  </Modal.Header>
-  <Modal.Body>
-    <Form>
-      <Form.Group controlId="id">
-        <Form.Label>เลขเอกสาร</Form.Label>
-        <Form.Control
-          type="text"
-          placeholder="ระบุเลขเอกสาร"
-          value={filters.id}
-          onChange={handleFilterChange}
-        />
-      </Form.Group>
+        {/* Modal Filter */}
+        <Modal show={showFilter} onHide={handleCloseFilter}>
+          <Modal.Header closeButton style={{ backgroundColor: "orange" }}>
+            <Modal.Title style={{ color: "white" }}>Filter</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Form>
+              <Form.Group controlId="id">
+                <Form.Label>เลขเอกสาร</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="ระบุเลขเอกสาร"
+                  value={filters.id}
+                  onChange={handleFilterChange}
+                />
+              </Form.Group>
 
-      <Form.Group controlId="docNameRaw" className="mt-3">
-        <Form.Label>ชื่อเอกสาร</Form.Label>
-        <Form.Control
-          type="text"
-          placeholder="ระบุชื่อเอกสาร"
-          value={filters.docNameRaw}
-          onChange={handleFilterChange}
-        />
-      </Form.Group>
+              <Form.Group controlId="docNameRaw" className="mt-3">
+                <Form.Label>ชื่อเอกสาร</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="ระบุชื่อเอกสาร"
+                  value={filters.docNameRaw}
+                  onChange={handleFilterChange}
+                />
+              </Form.Group>
 
-      <Form.Group controlId="type" className="mt-3">
-        <Form.Label>ประเภทเอกสาร</Form.Label>
-        <Form.Control
-          as="select"
-          value={filters.type}
-          onChange={handleFilterChange}
-        >
-          <option value="">เลือกประเภทเอกสาร</option>
-          <option value="เอกสารทั่วไป">เอกสารทั่วไป</option>
-          <option value="เอกสารบัญชี">เอกสารบัญชี</option>
-          <option value="เอกสารราชการ">เอกสารราชการ</option>
-        </Form.Control>
-      </Form.Group>
+              <Form.Group controlId="type" className="mt-3">
+                <Form.Label>ประเภทเอกสาร</Form.Label>
+                <Form.Control
+                  as="select"
+                  value={filters.type}
+                  onChange={handleFilterChange}
+                >
+                  <option value="">เลือกประเภทเอกสาร</option>
+                  <option value="เอกสารทั่วไป">เอกสารทั่วไป</option>
+                  <option value="เอกสารบัญชี">เอกสารบัญชี</option>
+                  <option value="เอกสารราชการ">เอกสารราชการ</option>
+                </Form.Control>
+              </Form.Group>
 
-      <Form.Group controlId="fiscalYear" className="mt-3">
-        <Form.Label>ปีงบประมาณ</Form.Label>
-        <Form.Control
-          type="number"
-          value={filters.fiscalYear}
-          onChange={handleFilterChange}
-        />
-      </Form.Group>
+              <Form.Group controlId="fiscalYear" className="mt-3">
+                <Form.Label>ปีงบประมาณ</Form.Label>
+                <Form.Control
+                  type="number"
+                  value={filters.fiscalYear}
+                  onChange={handleFilterChange}
+                />
+              </Form.Group>
 
-      <Form.Group controlId="department" className="mt-3">
-        <Form.Label>หน่วยงาน</Form.Label>
-        <Form.Control
-          as="select"
-          value={filters.department}
-          onChange={handleFilterChange}
-        >
-          <option value="">เลือกหน่วยงาน</option>
-          <option value="กระทรวงพลังงาน">กระทรวงพลังงาน</option>
-          <option value="กระทรวงการคลัง">กระทรวงการคลัง</option>
-        </Form.Control>
-      </Form.Group>
+              <Form.Group controlId="department" className="mt-3">
+                <Form.Label>หน่วยงาน</Form.Label>
+                <Form.Control
+                  as="select"
+                  value={filters.department}
+                  onChange={handleFilterChange}
+                >
+                  <option value="">เลือกหน่วยงาน</option>
+                  <option value="กระทรวงพลังงาน">กระทรวงพลังงาน</option>
+                  <option value="กระทรวงการคลัง">กระทรวงการคลัง</option>
+                </Form.Control>
+              </Form.Group>
 
-      <Button variant="dark" className="mt-4" onClick={applyFilters}>
-        ใช้ตัวกรอง
-      </Button>
-    </Form>
-  </Modal.Body>
-  <Modal.Footer>
-    <Button variant="secondary" onClick={handleCloseFilter}>
-      ปิด
-    </Button>
-    <Button variant="outline-danger" onClick={resetFilters}>
-      ล้างค่าทั้งหมด
-    </Button>
-  </Modal.Footer>
-</Modal>
-
-
+              <Button variant="dark" className="mt-4" onClick={applyFilters}>
+                ใช้ตัวกรอง
+              </Button>
+            </Form>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleCloseFilter}>
+              ปิด
+            </Button>
+            <Button variant="outline-danger" onClick={resetFilters}>
+              ล้างค่าทั้งหมด
+            </Button>
+          </Modal.Footer>
+        </Modal>
         <Modal
           size="lg"
           show={showInfo}
@@ -411,7 +389,6 @@ function Home() {
             </Button>
           </Modal.Footer>
         </Modal>
-
         <Modal
           show={showImageModal}
           onHide={() => setShowImageModal(false)}
@@ -450,7 +427,6 @@ function Home() {
             </div>
           </Modal.Body>
         </Modal>
-
         {/* Search and Filter */}
         <span className="search-container">
           <Form>
@@ -483,24 +459,23 @@ function Home() {
             </Button>
           </div>
         </span>
-
-        {/* Select All */}
-        <div style={{ margin: "20px 0" }}>
-          <Button
-            variant="primary"
-            onClick={selectAllDocuments}
-            style={{ marginLeft: "20px" }}
-          >
-            เลือกทั้งหมด
-          </Button>
-          <Button
-            variant="secondary"
-            onClick={deselectAllDocuments}
-            style={{ marginLeft: "10px" }}
-            disabled={selectedDocuments.length === 0}
-          >
-            ยกเลิกการเลือกทั้งหมด
-          </Button>
+        {role !== null && (
+          <div style={{ margin: "20px 0" }}>
+            <Button
+              variant="primary"
+              onClick={selectAllDocuments}
+              style={{ marginLeft: "20px" }}
+            >
+              เลือกทั้งหมด
+            </Button>
+            <Button
+              variant="secondary"
+              onClick={deselectAllDocuments}
+              style={{ marginLeft: "10px" }}
+              disabled={selectedDocuments.length === 0}
+            >
+              ยกเลิกการเลือกทั้งหมด
+            </Button>
           <Button
             variant="danger"
             // onClick={deleteSelectedDocuments}
@@ -510,8 +485,8 @@ function Home() {
           >
             ลบที่เลือก
           </Button>
-        </div>
-
+          </div>
+        )}
         {/* Table for Documents */}
         <div className="file-container">
           <table className="table-container">
@@ -542,38 +517,55 @@ function Home() {
             </thead>
             <tbody>
               {filteredDocuments.map((doc) => (
-              
-              < tr key={doc.id}
-              
-                onMouseEnter={() => setHoveredRow(doc.id)}
-                onMouseLeave={() => setHoveredRow(null)}
-              >
-              <td>
-                  <input
+                <tr
+                  key={doc.id}
+                  onMouseEnter={() => setHoveredRow(doc.id)}
+                  onMouseLeave={() => setHoveredRow(null)}
+                >
+                  <td>
+                    <input
                       type="checkbox"
                       checked={selectedDocuments.includes(doc.id)}
                       onChange={() => toggleSelectDocument(doc.id)}
-                  />
-              </td>
-              <td onClick={() => handleImageClick(doc.file.content)} style={{ cursor: "pointer" }}>
-                  {doc.id}
-              </td>
-              <td onClick={() => handleImageClick(doc.file.content)} style={{ cursor: "pointer" }}>
-                  {doc.docNameRaw}
-              </td>
-              <td onClick={() => handleImageClick(doc.file.content)} style={{ cursor: "pointer" }}>
-                  {doc.time}
-              </td>
-              <td onClick={() => handleImageClick(doc.file.content)} style={{ cursor: "pointer" }}>
-                  {doc.type}
-              </td>
-              <td onClick={() => handleImageClick(doc.file.content)} style={{ cursor: "pointer" }}>
-                  {doc.description}
-              </td>
-              <td onClick={() => handleImageClick(doc.file.content)} style={{ cursor: "pointer" }}>
-                  {doc.name}
-              </td>
-          
+                    />
+                  </td>
+                  <td
+                    onClick={() => handleImageClick(doc.file.content)}
+                    style={{ cursor: "pointer" }}
+                  >
+                    {doc.id}
+                  </td>
+                  <td
+                    onClick={() => handleImageClick(doc.file.content)}
+                    style={{ cursor: "pointer" }}
+                  >
+                    {doc.docNameRaw}
+                  </td>
+                  <td
+                    onClick={() => handleImageClick(doc.file.content)}
+                    style={{ cursor: "pointer" }}
+                  >
+                    {doc.time}
+                  </td>
+                  <td
+                    onClick={() => handleImageClick(doc.file.content)}
+                    style={{ cursor: "pointer" }}
+                  >
+                    {doc.type}
+                  </td>
+                  <td
+                    onClick={() => handleImageClick(doc.file.content)}
+                    style={{ cursor: "pointer" }}
+                  >
+                    {doc.description}
+                  </td>
+                  <td
+                    onClick={() => handleImageClick(doc.file.content)}
+                    style={{ cursor: "pointer" }}
+                  >
+                    {doc.name}
+                  </td>
+
                   <td style={{ textAlign: "end" }}>
                     {/* ถ้า hoveredRow ตรงกับ doc.id ให้แสดงไอคอน action; ถ้าไม่ตรง ให้แสดง 3 จุด */}
                     {hoveredRow === doc.id ? (
