@@ -1,0 +1,39 @@
+.Header-container {
+    display: flex;
+    justify-content: space-between; /* จัดตำแหน่งให้องค์ประกอบซ้ายและขวา */
+    align-items: center; /* จัดตำแหน่งให้อยู่ตรงกลางในแนวตั้ง */
+    /* background: #ffb74b; */
+    background-image: linear-gradient(180deg,#ffae00, #ffeee8);
+    padding: 10px; /* เพิ่ม padding เพื่อให้ดูสวยงาม */
+    margin-bottom: 1rem;
+   /* border-bottom: 3px solid #ffcc6d; */
+   box-shadow: lightgray 0px 1px 5px;
+    /*border-bottom: 1px solid black;  เพิ่มเส้นกรอบเฉพาะด้านล่าง */
+}
+
+.Right-Box {
+    display: flex;
+    justify-content: end;
+    align-items: flex-start; /* กำหนดให้องค์ประกอบภายในอยู่บนสุด */
+    flex-direction: row;
+    gap: 1rem;
+    
+}
+
+.search-container{
+    padding: 5px;
+    
+}
+.logo-img img{
+    height:50px;
+    width: auto;
+    padding:5px;
+    margin-left: 5px;
+    /* border: 1px solid #ff6600; */
+    border-radius: 5px;
+    background: #ffffff ;
+    box-shadow: 0px 0px 4px #ddd;
+            border: 2px solid orange,
+         
+    
+}

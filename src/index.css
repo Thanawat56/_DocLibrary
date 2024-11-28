@@ -1,0 +1,21 @@
+body{
+    min-width: 1280px;
+    min-height: 720px;
+    background-color: #ffeee8;
+    /* background-color: #ffcdb4; */
+}
+
+h1{
+    font-size: xx-large;
+}
+
+.main_css-container{
+    /* border: 1px solid black; */
+    border-radius: 5px;
+    width: 80%;
+    min-height: 50rem;
+    background: rgb(255, 255, 255);
+    margin: 0 1.5rem 0.5rem 0;
+    box-shadow: lightgray 0px 1px 5px 2px;
+    padding: 1.5rem 2rem 1.5rem 2rem;
+}

@@ -1,0 +1,327 @@
+/* Container */
+.Approve-container {
+    padding: 0.625rem; /* ลด padding */
+    background-color: #ffffff;
+    box-sizing: border-box;
+    border-radius: 0.3125rem; /* ลด border-radius */
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 0.625rem; /* ลดระยะห่าง */
+    gap: 0.3125rem; /* ลด gap */
+}
+
+/* Header */
+.Approve-header-content {
+    text-align: center;
+    font-size: 0.9rem; /* ปรับขนาดตัวอักษรตามที่ต้องการ */
+    font-weight: bold; /* ปรับน้ำหนักตัวอักษร */
+    align-items: center;
+    padding-top: 1.5rem; /* ลด padding */
+    padding-bottom: 2.5rem;
+    background-color: #ffffff;
+    border-radius: 0.3125rem; /* ลด border-radius */
+    font-weight: bold;
+    color: #333;
+    
+}
+
+.Approve-body-content{
+    display: grid;
+    grid-template-columns: 3fr 2fr 3fr 1fr;
+    align-items: center;
+    padding: 0.5rem;
+    padding-right: 2rem;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    font-size: 0.9rem;
+}
+
+.document-name,
+.document-date,
+.document-uploader {
+    font-size: 0.875rem;
+}
+
+/* Document List */
+.document-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background-color: #ffffff;
+    padding: 0.5rem;
+}
+
+.document-item {
+    display: grid;
+    grid-template-columns: 3fr 2fr 3fr 1fr;
+    align-items: center;
+    padding: 0.5rem;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    font-size: 0.9rem;
+}
+
+.document-header {
+    display: grid;
+    grid-template-columns: 4fr 2fr 2fr 1fr; /* กำหนดขนาดคอลัมน์ให้ตรงกัน */
+    align-items: center;
+    padding: 0.5rem;
+    background-color: #ffffff;
+    border-radius: 0.3125rem;
+}
+
+.document-name,
+.document-date,
+.document-uploader {
+    flex: 1; /* ทำให้ทุกคอลัมน์มีขนาดเท่ากัน */
+}
+
+.document-name {
+    text-align: left;
+}
+
+.document-date {
+    text-align: center; /* จัดตำแหน่งวันที่ให้อยู่กลาง */
+}
+
+.document-uploader {
+    text-align: center; /* จัดตำแหน่งผู้ที่อัปโหลดให้ตรงขวา */
+}
+
+.icons {
+    display: flex;
+    gap: 0.3125rem;
+}
+
+/* Adjustments for icon buttons */
+.icon-button {
+    background: none;
+    border: none;
+    font-size: 0.875rem;
+    cursor: pointer;
+    color: #333;
+}
+
+.icon-check, .icon-delete, .icon-info {
+    font-size: 1.5rem;
+    color: rgb(0, 0, 0);
+}
+
+.pagination-button {
+    background: none;
+    border: none;
+    font-size: 1rem;
+}
+
+.pagination-text {
+    font-size: 1rem; /* ลดขนาดฟอนต์ */    
+}
+
+/* Popup */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+/* Popup Container (กรอบสีส้ม) */
+.popup-container {
+    max-width: 500px;
+    width: 100%;
+    background-color: #ffae00;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+.popup-container-info {
+    max-width: 1000px; /* ขนาดกรอบสีส้มเล็กลง */
+    width: 100%;
+    background-color: #000000; /* พื้นหลังสีส้ม */
+    border-radius: 1rem;
+    /* padding-right: 1rem; */
+    padding: 1rem; /* ระยะห่างขอบด้านใน */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    box-sizing: border-box;
+}
+
+.popup-header {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #000;
+    text-align: center;
+    margin-bottom: 0.25 rem;
+}
+
+.approve-popup-header {
+    background-color: #ffffff;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    border-radius: 0.3125rem;
+    margin-bottom: 2rem;
+}
+
+.popup-checkbox-group{
+    background-color: #ffffff;
+    padding-left: 8rem;
+    padding-right: 8rem;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+    border-radius: 0.3125rem;
+}
+
+.reason-input {
+    width: 90%; /* ลดความกว้าง */
+    height: 4.6875rem; /* ลดความสูง */
+    border-radius: 0.3125rem;
+    padding: 0.3125rem; /* ลด padding */
+    border: 0.0625rem solid #ccc;
+    font-size: 0.875rem; /* ลดขนาดฟอนต์ */
+    resize: none;
+    background-color: #ffffff;
+    margin: 0.3125rem 0; /* ลดระยะห่าง */
+}
+
+.popup-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: right; /* จัดปุ่มไว้ตรงกลาง */
+    margin-top: 0.25rem;
+}
+
+.popup-button {
+    padding: 0.5rem 1.5rem;
+    color: #fff;
+    border: none;
+    border-radius: 0.3125rem;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.popup-button:hover {
+    background-color: #858484; /* สีแดงเข้มเมื่อ Hover */
+}
+
+
+.popup-cancel {
+    background-color: #afafaf;
+    margin-right: 0.25rem; /* ลดระยะห่าง */}
+
+.popup-cancel:hover {
+    background-color: #858484;
+}
+
+.popup-confirm {
+    background-color: #afafaf;
+}
+
+.popup-message {
+    font-size: 0.875rem; /* ลดขนาดฟอนต์ */
+    margin-top: 1rem; /* ลดระยะห่าง */
+    text-align:  center;
+}
+
+.popup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    margin: 1rem 0;
+}
+
+.popup-content {
+    width: 100%;
+    background-color: #ffffff; /* พื้นหลังสีขาว */
+    padding: 1.5rem; /* ระยะห่างภายใน */
+    border-radius: 0.625rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    box-sizing: border-box;
+    position: relative; /* ใช้สำหรับจัดตำแหน่งปุ่ม */
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 0.7fr 2fr 0.5fr 2fr; /* จัด Layout สองคอลัมน์ */
+    gap: 0.5rem;
+    align-items: right;
+    border-radius: 0.315rem;
+}
+
+.form-row.full-width {
+    grid-template-columns:  1fr; /* คำอธิบายขยายเต็มแถวเดียว */
+}
+
+.description-input {
+    width: 100%; /* ขยายให้เต็มพื้นที่ */
+    height: 12rem; /* ความสูงจะปรับอัตโนมัติ */
+    min-height: 3rem; /* กำหนดความสูงขั้นต่ำ */
+    padding: 0.625rem;
+    border-radius: 0.3125rem;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    background-color: #f9f9f9;
+    resize: none; /* ป้องกันการปรับขนาดโดยผู้ใช้ */
+    overflow: hidden; /* ไม่แสดงสกรอลล์ */
+    overflow-y: auto;
+    white-space: pre-wrap; /* ทำให้ข้อความขึ้นบรรทัดใหม่อัตโนมัติ */
+    word-wrap: break-word; /* ทำให้คำยาวๆ ขึ้นบรรทัดใหม่ได้ */
+    line-height: 1.5; /* เพิ่มระยะห่างระหว่างบรรทัด */
+}
+
+.description-input:focus {
+    outline: none; /* ป้องกันการแสดงขอบเมื่อถูกคลิก */
+}
+
+.popup-checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.popup-checkbox {
+    font-size: 1rem;
+    display: flex;
+    align-items: center;    
+    gap: 0.5rem;
+}
+
+.popup-checkbox input {
+    width: 1rem;
+    height: 1rem;
+    cursor: pointer;
+}
+
+.pdf-icon {
+    font-size: 1.5rem;
+
+}
+
+.profile-icon {
+    font-size: 1.5rem;
+}
