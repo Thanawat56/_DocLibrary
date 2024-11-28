@@ -258,10 +258,10 @@ function Notification() {
                           }
                         />
                       </th>
-                      <th>Title</th>
-                      <th>Body</th>
-                      <th style={{ textAlign: "center" }}>Time</th>
-                      <th style={{ textAlign: "center" }}>Priority</th>
+                      <th>ชื่อ</th>
+                      <th>เนื้อหา</th>
+                      <th style={{ textAlign: "center" }}>เวลา</th>
+                      <th style={{ textAlign: "center" }}>ความสำคัญ</th>
                       <th></th>
                     </tr>
                   </thead>
@@ -291,7 +291,7 @@ function Notification() {
                             color: item.priority === "high" ? "red" : "green",
                           }}
                         >
-                          {item.priority === "high" ? "High" : "Normal"}
+                          {item.priority === "high" ? "สูง" : "ปกติ"}
                         </td>
                         <td style={{ textAlign: "right" }}>
                           {/* เดี่ยวมาเปิดทีหลัวง */}
@@ -305,6 +305,7 @@ function Notification() {
                           <button
                             className="btn btn-outline-danger"
                             onClick={() => deleteNotification(item.id)}
+                            
                           >
                             <BsTrash size={16} /> ลบ
                           </button>

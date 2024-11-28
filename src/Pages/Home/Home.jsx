@@ -194,7 +194,7 @@ function Home() {
         {/* Modal Filter */}
         <Modal show={showFilter} onHide={handleCloseFilter}>
           <Modal.Header closeButton style={{ backgroundColor: "orange" }}>
-            <Modal.Title style={{ color: "white" }}>Filter</Modal.Title>
+            <Modal.Title style={{ color: "white" }}>กรองข้อมูลเอกสาร</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Form>
@@ -506,11 +506,11 @@ function Home() {
                   />
                 </th>
                 <th>ID</th>
-                <th>Name</th>
-                <th>Date</th>
-                <th>Type</th>
-                <th>Describe</th>
-                <th>Uploader</th>
+                <th>ชื่อเอกสาร</th>
+                <th>วันที่อัปโหลด</th>
+                <th>ประเภท</th>
+                <th>คำอธิบาย</th>
+                <th>ผู้อัปโหลด</th>
                 <th></th>
               </tr>
             </thead>
