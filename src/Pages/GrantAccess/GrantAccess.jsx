@@ -58,9 +58,9 @@ function GrantAccess({ data, setData }) {
                   >
                     <td>
                       {role === "Super Admin"
-                        ? "ผู้ดูแลระบบ"
+                        ? "หัวหน้าผู้ดูแล"
                         : role === "Admin"
-                        ? "หัวหน้าแผนก"
+                        ? "ผู้ดูแล"
                         : "พนักงาน"}
                     </td>
                     <td>

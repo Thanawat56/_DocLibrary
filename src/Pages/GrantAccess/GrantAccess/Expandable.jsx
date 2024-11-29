@@ -11,9 +11,9 @@ function Expandable({ data, isOpen, onRoleChange, allUsers, updateAllUsers }) {
           <td style={{ color: "grey" }}>{data.name}</td>
           <td className="text-center" style={{ color: "grey" }}>
             {data.role === "Super Admin"
-              ? "ผู้ดูแลระบบ"
+              ? "หัวหน้าผู้ดูแล"
               : data.role === "Admin"
-              ? "หัวหน้าแผนก"
+              ? "ผู้ดูแล"
               : "พนักงาน"}
           </td>
           <td align="right">

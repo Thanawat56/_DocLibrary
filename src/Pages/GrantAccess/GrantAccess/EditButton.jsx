@@ -74,8 +74,8 @@ function EditButton({ data, onRoleChange, allUsers, updateAllUsers }) {
               tempUpload === true ? "อัปโหลดได้" : "อัปโหลดไม่ได้"
             }`
           : tempRole === "Admin"
-          ? "ตําแหน่ง หัวหน้าแผนก"
-          : "ตําแหน่ง ผู้ดูแลระบบ"
+          ? "ตําแหน่ง ผู้ดูแล"
+          : "ตําแหน่ง หัวหน้าผู้ดูแล"
       }`, // เนื้อหาของแจ้งเตือน
       time: new Date().toLocaleString(), // เวลาที่แจ้งเตือน
       priority: "high", // ความสําคัญของแจ้งเตือน
@@ -156,9 +156,9 @@ function EditButton({ data, onRoleChange, allUsers, updateAllUsers }) {
         data.role === "Officer"
           ? "พนักงาน"
           : data.role === "Admin"
-          ? "หัวหน้าแผนก"
-          : "ผู้ดูแลระบบ"
-      } ไปเป็นตำแหน่ง Super Admin แทน ${superAdmin.name}`, // เนื้อหาของแจ้งเตือน
+          ? "ผู้ดูแล"
+          : "หัวหน้าผู้ดูแล"
+      } ไปเป็นตำแหน่ง หัวหน้าผู้ดูแล แทน ${superAdmin.name}`, // เนื้อหาของแจ้งเตือน
 
       time: new Date().toLocaleString(), // เวลาที่แจ้งเตือน
       priority: "high", // ความสําคัญของแจ้งเตือน
@@ -209,15 +209,15 @@ function EditButton({ data, onRoleChange, allUsers, updateAllUsers }) {
             <p>
               ตำแหน่ง:{" "}
               {tempRole === "Admin"
-                ? "หัวหน้าแผนก"
+                ? "ผู้ดูแล"
                 : tempRole === "Officer"
                 ? "พนักงาน"
-                : "ผู้ดูแลระบบ"}
+                : "หัวหน้าผู้ดูแล"}
             </p>
             <p>รหัสพนักงาน: {data.id}</p>
             <p>แผนก: {data.userDepartment}</p>
             <select name="role" value={tempRole} onChange={handleRoleChange}>
-              <option value="Admin">หัวหน้าแผนก</option>
+              <option value="Admin">ผู้ดูแล</option>
               <option value="Officer">พนักงาน</option>
             </select>
             <button
@@ -227,7 +227,7 @@ function EditButton({ data, onRoleChange, allUsers, updateAllUsers }) {
                 handleShow(), setShowEdit(false);
               }}
             >
-              มอบสิทธิ์ ผู้ดูแลระบบ
+              มอบสิทธิ์ หัวหน้าผู้ดูแล
             </button>
             {tempRole === "Officer" && (
               <>
@@ -271,7 +271,7 @@ function EditButton({ data, onRoleChange, allUsers, updateAllUsers }) {
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title style={{ color: "red" }}>
-            การยืนยันเพื่อมอบสิทธิ์&nbsp;ผู้ดูแลระบบ
+            การยืนยันเพื่อมอบสิทธิ์&nbsp;หัวหน้าผู้ดูแล
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -281,7 +281,7 @@ function EditButton({ data, onRoleChange, allUsers, updateAllUsers }) {
                 <b>
                   โปรดกรอก&nbsp;รหัสพนักงาน&nbsp;และ&nbsp;รหัสผ่าน เพื่อ
                   <span style={{ color: "red" }}>
-                    ยืนยันการมอบสิทธิ์ ผู้ดูแลระบบ
+                    ยืนยันการมอบสิทธิ์ หัวหน้าผู้ดูแล
                   </span>
                   ให้กับ <span style={{ color: "red" }}>{data.name}</span>
                 </b>
@@ -345,7 +345,7 @@ function EditButton({ data, onRoleChange, allUsers, updateAllUsers }) {
               <p>
                 หากคุณทำการ
                 <span style={{ color: "red" }}>
-                  ยืนยันการมอบสิทธิ์ ผู้ดูแลระบบ
+                  ยืนยันการมอบสิทธิ์ หัวหน้าผู้ดูแล
                 </span>
                 ให้กับ<span style={{ color: "red" }}>{data.name}</span>
                 &nbsp;ระบบจะปรับสิทธิ์คุณให้เป็น&nbsp;
