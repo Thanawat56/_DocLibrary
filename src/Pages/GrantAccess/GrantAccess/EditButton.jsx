@@ -182,7 +182,7 @@ function EditButton({ data, onRoleChange, allUsers, updateAllUsers }) {
     window.dispatchEvent(new Event("storage"));
 
     // กลับไปที่หน้า Home
-    window.location.href = "/home";
+    window.location.href = "/_DocLibrary/";
   };
 
   return (
