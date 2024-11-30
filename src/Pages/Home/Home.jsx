@@ -421,7 +421,7 @@ function Home() {
                   }}
                 />
               ) : (
-                <p>Loading image...</p>
+                <p>ไม่พบภาพ</p>
               )}
             </div>
           </Modal.Body>
