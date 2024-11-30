@@ -43,6 +43,30 @@ function App() {
           .catch((error) => console.error("Error fetching data:", error));
       }
     }, []);
+
+    // ฟังก์ชันสำหรับโหลดข้อมูลจาก localStorage หรือไฟล์ JSON
+    useEffect(() => {
+      const localData = localStorage.getItem("approveDocuments"); // ดึงข้อมูลจาก localStorage
+      if (localData) {
+        setData(JSON.parse(localData)); // ใช้ข้อมูลใน localStorage ถ้ามีอยู่
+      } else {
+        // ถ้าไม่มีข้อมูลใน localStorage ให้โหลดจากไฟล์ JSON
+        fetch("./Data/DataDoc.json")
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Network response was not ok");
+            }
+            return response.json();
+          })
+          .then((jsonData) => {
+            setData(jsonData); // บันทึกข้อมูลใน state
+            localStorage.setItem("approveDocuments", JSON.stringify(jsonData)); // บันทึกข้อมูลใน localStorage
+          })
+          .catch((error) => console.error("Error fetching data:", error));
+      }
+    }, []);
+
+
   return (
     <div className="app-container">
       <HashRouter>
