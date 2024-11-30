@@ -18,6 +18,7 @@ import "bootstrap-icons/font/bootstrap-icons.min.css";
 import "./App.css";
 
 import { useState, useEffect } from "react";
+import AboutDev from "./Pages/About Dev/aboutDev";
 
 function App() {
   const [data, setData] = useState([]); // State สำหรับเก็บข้อมูล
@@ -50,6 +51,7 @@ function App() {
             <Route path="*" element={<Home />} />
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
+            <Route path="/aboutdev" element={<AboutDev />} />
             <Route path="/approve" element={<Approve />} />
             <Route path="/grant-access" element={<GrantAccess data={data} setData={setData} />} />
             <Route path="/notification" element={<Notification />} />

@@ -78,6 +78,8 @@ function NavbarMain() {
             <BsHouseDoor className="me-2" /> หน้าแรก{" "}
           </Nav.Link>
 
+          
+
           {/* เงื่อนไขแสดงปุ่มตาม Role */}
           {role === "Officer" && (
             <>
@@ -229,9 +231,22 @@ function NavbarMain() {
                 <BsTrash className="me-2" /> ถังขยะ
               </Nav.Link>
 
+              {/* ลิงก์ไปหน้า AboutDev */}
+
               
             </>
           )}
+          <Nav.Link
+            as={Link}
+            to="/aboutDev"
+            style={{ border: "none", borderRadius: "20px", color: "black" }}
+            className={`d-flex align-items-center ${
+              activeButton === "aboutDev" ? "bg-danger text-white" : ""
+            }`}
+            onClick={() => handleSelect("aboutDev")}
+          >
+            <p className="me-2" /> AboutDev{" "}
+          </Nav.Link>
         </Nav>
       </Container>
     </div>
