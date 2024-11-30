@@ -1,0 +1,10 @@
+.navbar-container {
+    /* border: 1px solid black; */
+    width: 20%;
+    max-height: 50em;
+    background: white;
+    margin-right: 20px;
+    box-shadow: lightgray 0px 1px 5px 2px;
+    border: 1px solid lightgray;
+    border-radius: 0px 5px 5px 0px;
+}
