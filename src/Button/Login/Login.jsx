@@ -63,7 +63,7 @@ function Login() {
       window.dispatchEvent(new Event("storage"));
 
       // เปลี่ยนเส้นทางไปยังหน้า Home
-      window.location.href = "home";
+      window.location.href = "/_DocLibrary/";
     }
   };
 
@@ -76,7 +76,7 @@ function Login() {
     window.dispatchEvent(new Event("storage"));
 
     // กลับไปที่หน้า Home
-    window.location.href = "home";
+    window.location.href = "/_DocLibrary/";
   };
 
   // popUp Login
@@ -119,6 +119,7 @@ function Login() {
             style={{
               color: "#4d4d4d",
               background: "none",
+              border: "none",
               borderRadius: "30px",
               margin: "0 0 0 0.5rem",
             }}
